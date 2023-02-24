@@ -31,7 +31,9 @@ def find_movie(update, context):
     cmsgtid = update.message.message_id
     movies_list = search_movies(query)
     tracemalloc.start()
+    keyboardsss = []
     keyboardd = InlineKeyboardButton("Join Here", url="https://t.me/+pPfgk74QbDcyN2M1")
+    keyboardsss.append([keyboardd])
     reply_markupp = InlineKeyboardMarkup(keyboardd)
     ss = "🎥 Please Wait Approx 24 hrs \nYour Requested Movie \n"
     sat = "We will upload your movie on another channel asap\ntill now  please Join it\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ"
