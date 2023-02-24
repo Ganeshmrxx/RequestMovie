@@ -44,14 +44,14 @@ def find_movie(update, context):
     bot.delete_message(chat_id=chatid, message_id=cmsgtid)
     
     update.message.reply_photo(photo="https://graph.org/file/5836bb37d8445d90b8482.png", caption=f"🎥 Request Accepted 💯")
-    k = update.reply_text(f"{tittle}", reply_markup=reply_markupp)
+    k = update.message.reply_text(f"{tittle}", reply_markup=reply_markupp)
     if movies_list:
         keyboards = []
         for movie in movies_list:
             keyboard = InlineKeyboardButton(movie["title"], callback_data=movie["id"])
             keyboards.append([keyboard])
         reply_markup = InlineKeyboardMarkup(keyboards)
-        m = update.reply_text('Till Now 🎥 watch any of these!', reply_markup=reply_markup)
+        m = update.message.reply_text('Till Now 🎥 watch any of these!', reply_markup=reply_markup)
 
     else:
         #bot.delete_message(chat_id=chatid, message_id=msgid)
