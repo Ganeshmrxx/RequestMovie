@@ -38,8 +38,9 @@ def find_movie(update, context):
     ss = "Please Wait Approx 24 hrs \n\nYour Requested Movie : 🎥 "
     sat = " 🍿\n\nWe will upload your movie on another channel asap\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ\n\n👇Please Join👇\n\n"
     tittle = f"{ss}{query}{sat}"
+    bot.delete_message(chat_id=chatid, message_id=cmsgtid)
     m = update.message.reply_photo(photo="https://graph.org/file/0b96452b81925298b2ee2.jpg", caption=f"🎥 Request Accepted")
-    search_results.edit_text(tittle, reply_markup=reply_markupp)
+    search_results.reply_text(tittle, reply_markup=reply_markupp)
     if movies_list:
         keyboards = []
         for movie in movies_list:
