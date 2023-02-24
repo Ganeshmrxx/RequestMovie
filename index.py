@@ -40,7 +40,7 @@ def find_movie(update, context):
     tittle = f"{ss}{query}{sat}"
     bot.delete_message(chat_id=chatid, message_id=cmsgtid)
     m = update.message.reply_photo(photo="https://graph.org/file/0b96452b81925298b2ee2.jpg", caption=f"🎥 Request Accepted")
-    search_results.reply_text(tittle, reply_markup=reply_markupp)
+    search_results.reply_text(f"{m}", reply_markup=reply_markupp)
     if movies_list:
         keyboards = []
         for movie in movies_list:
