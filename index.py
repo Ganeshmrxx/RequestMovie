@@ -18,9 +18,9 @@ chatid1 = ""
 
 
 def welcome(update, context) -> None:
-    update.message.reply_text(f"Hello *{update.message.from_user.first_name}* \n Welcome To Our Request Group \n"
-                              f"🔥 Format :\n Movie/series name + Year + language 💯\n\n"
-                              f"Example: \nAvatar 2023 in Hindi \n 🍿")
+    update.message.reply_text(f"Hello **{update.message.from_user.first_name}** \n\nWelcome To Our Request Group \n"
+                              f"🔥 Format :🔥\n\nMovie Name + Year + language 💯\n\n"
+                              f"Example: \nAvatar 2023 in Hindi 🍿")
     # update.message.reply_text("👇 Type Movie Or Series Name 👇")
 
 
@@ -32,11 +32,11 @@ def find_movie(update, context):
     movies_list = search_movies(query)
     tracemalloc.start()
     keyboardsss = []
-    keyboardd = InlineKeyboardButton("Requested Movie Here", url="https://t.me/+pPfgk74QbDcyN2M1")
+    keyboardd = InlineKeyboardButton("Requested Movie Uploded Here", url="https://t.me/+pPfgk74QbDcyN2M1")
     keyboardsss.append([keyboardd])
     reply_markupp = InlineKeyboardMarkup(keyboardsss)
-    ss = "🎥 Please Wait Approx 24 hrs \nYour Requested Movie \n"
-    sat = "We will upload your movie on another channel asap\ntill now  please Join it\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ"
+    ss = "Please Wait Approx 24 hrs \nYour Requested Movie \n🎥 "
+    sat = " 🍿\nWe will upload your movie on another channel asap\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ\n\nPlease Join\n\n"
     tittle = f"{ss}{query}{sat}"
     search_results.reply_text(tittle, reply_markup=reply_markupp)
     if movies_list:
