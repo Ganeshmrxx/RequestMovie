@@ -25,7 +25,7 @@ def welcome(update, context) -> None:
 
 
 def find_movie(update, context):
-    m = update.message.reply_photo(photo="https://graph.org/file/0b96452b81925298b2ee2.jpg", caption=f"🔥 Requesting....💯")
+    m = update.message.reply_photo(photo="https://graph.org/file/5836bb37d8445d90b8482.png", caption=f"🔥 Requesting....💯")
     #search_results = update.message.reply_text("🔥 Requesting....💯")
     query = update.message.text
     chatid = update.message.chat.id
@@ -42,7 +42,7 @@ def find_movie(update, context):
     cmsgtid = m.message_id
     bot.delete_message(chat_id=chatid, message_id=cmsgtid)
     update.message.reply_photo(photo="https://graph.org/file/0b96452b81925298b2ee2.jpg", caption=f"🎥 Request Accepted 💯")
-    search_results.reply_text(f"{tittle}", reply_markup=reply_markupp)
+    update.reply_text(f"{tittle}", reply_markup=reply_markupp)
     if movies_list:
         keyboards = []
         for movie in movies_list:
