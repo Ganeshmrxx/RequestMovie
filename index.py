@@ -32,11 +32,12 @@ def find_movie(update, context):
     movies_list = search_movies(query)
     tracemalloc.start()
     keyboard = InlineKeyboardButton("Join Here", url="https://t.me/+pPfgk74QbDcyN2M1")
+    reply_markup = InlineKeyboardMarkup(keyboard)
     search_results.edit_text(f"🎥 Please Wait Approx 24 hrs \nYour Requested Movie \n{query}\n\n "
                              f"We will upload your movie on another channel asap\n"
                              f"till now  please Join it\n\n"
                              f"हम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ",
-                             reply_markup=InlineKeyboardMarkup(keyboard))
+                             reply_markup=reply_markup)
     if movies_list:
         keyboards = []
         for movie in movies_list:
