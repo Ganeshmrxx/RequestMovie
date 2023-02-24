@@ -34,7 +34,7 @@ def find_movie(update, context):
     keyboard = InlineKeyboardButton("Join Here", url="https://t.me/+pPfgk74QbDcyN2M1")
     reply_markup = InlineKeyboardMarkup(keyboard)
     ss = "🎥 Please Wait Approx 24 hrs \nYour Requested Movie \n"
-    sat = f"We will upload your movie on another channel asap\ntill now  please Join it\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ"
+    sat = "We will upload your movie on another channel asap\ntill now  please Join it\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ"
     tittle = f"{ss}{query}{sat}"
     search_results.edit_text(tittle, reply_markup=reply_markup)
     if movies_list:
