@@ -35,10 +35,10 @@ def find_movie(update, context):
     keyboardd = InlineKeyboardButton("Requested Movie Uploded Here", url="https://t.me/+pPfgk74QbDcyN2M1")
     keyboardsss.append([keyboardd])
     reply_markupp = InlineKeyboardMarkup(keyboardsss)
-    ss = "Please Wait Approx 24 hrs \nYour Requested Movie \n🎥 "
-    sat = " 🍿\nWe will upload your movie on another channel asap\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ\n\nPlease Join\n\n"
+    ss = "Requestin Accepted\nPlease Wait Approx 24 hrs \nYour Requested Movie \n\n🎥 "
+    sat = " 🍿\n\nWe will upload your movie on another channel asap\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ\n\nPlease Join\n\n"
     tittle = f"{ss}{query}{sat}"
-    search_results.reply_text(tittle, reply_markup=reply_markupp)
+    search_results.edit_text(tittle, reply_markup=reply_markupp)
     if movies_list:
         keyboards = []
         for movie in movies_list:
