@@ -36,7 +36,7 @@ def find_movie(update, context):
     ss = "🎥 Please Wait Approx 24 hrs \nYour Requested Movie \n"
     sat = "We will upload your movie on another channel asap\ntill now  please Join it\n\nहम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ"
     tittle = f"{ss}{query}{sat}"
-    search_results.edit_text("hh", reply_markup=reply_markupp)
+    search_results.reply_text("hh", reply_markup=reply_markupp)
     if movies_list:
         keyboards = []
         for movie in movies_list:
