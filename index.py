@@ -11,40 +11,45 @@ import asyncio
 import tracemalloc
 
 TOKEN = os.getenv("TOKEN")
-URL = "https://moviesbot-peach.vercel.app"
+URL = "https://request-movie.vercel.app"
 bot = Bot(TOKEN)
 msgid1 = ""
 chatid1 = ""
 
 
-
 def welcome(update, context) -> None:
-    update.message.reply_text(f"Hello *{update.message.from_user.first_name}* \n Welcome To Our Group.\n"
-                              f"🔥 Search It 💯  Enjoy it  🍿")
-    l = update.message.reply_text("👇 Type Movie Or Series Name 👇")
-
+    update.message.reply_text(f"Hello *{update.message.from_user.first_name}* \n Welcome To Our Request Group \n"
+                              f"🔥 Format :\n Movie/series name + Year + language 💯\n\n"
+                              f"Example: \nAvatar 2023 in Hindi \n 🍿")
+    # update.message.reply_text("👇 Type Movie Or Series Name 👇")
 
 
 def find_movie(update, context):
-    search_results = update.message.reply_text("🔥 Searching.... Pls Wait..💯")
+    search_results = update.message.reply_text("🔥 Requesting....💯")
     query = update.message.text
     chatid = update.message.chat.id
+    cmsgtid = update.message.message_id
     movies_list = search_movies(query)
     tracemalloc.start()
+    keyboard = InlineKeyboardButton("Join Here", url="https://t.me/+pPfgk74QbDcyN2M1")
+    search_results.edit_text(f"🎥 Please Wait Approx 24 hrs \nYour Requested Movie \n{query}\n\n "
+                             f"We will upload your movie on another channel asap\n"
+                             f"till now  please Join it\n\n"
+                             f"हम आपकी मूवी को दूसरे चैनल पर अपलोड करेंगे कृपया करके उस पर ज्वाइन हो जाओ",
+                             reply_markup=InlineKeyboardMarkup(keyboard))
     if movies_list:
         keyboards = []
         for movie in movies_list:
             keyboard = InlineKeyboardButton(movie["title"], callback_data=movie["id"])
             keyboards.append([keyboard])
         reply_markup = InlineKeyboardMarkup(keyboards)
-        m = search_results.edit_text('Here I found - Pls Select One..!', reply_markup=reply_markup)   
+        m = search_results.reply_text('Till Now 🎥 watch any of these!', reply_markup=reply_markup)
 
     else:
-         ok='ok'
-       
-        
-    
-    
+        #bot.delete_message(chat_id=chatid, message_id=msgid)
+        ok = 'ok'
+
+
 def movie_result(update, context) -> None:
     query = update.callback_query
     msgid = query.message.message_id
@@ -70,17 +75,16 @@ def movie_result(update, context) -> None:
     reply_markup = InlineKeyboardMarkup(keyboards)
     k = query.message.reply_text('Click To Watch Online & Download', reply_markup=reply_markup)
     bot.delete_message(chat_id=chatid, message_id=msgid)
-    #asyncio.create_task(dlt(chatid1, msgid))
-    #loop = asyncio.get_event_loop()
-    #task = loop.create_task(dlt(chatid1, msgid))
-    #dlt(chatid1, msgid)
+    # asyncio.create_task(dlt(chatid1, msgid))
+    # loop = asyncio.get_event_loop()
+    # task = loop.create_task(dlt(chatid1, msgid))
+    # dlt(chatid1, msgid)
 
- 
-async def dlt(chid, midd): 
-    
-     await asyncio.sleep(20)
-     bot.delete_message(chat_id=chid, message_id=midd)
-   
+
+async def dlt(chid, midd):
+    await asyncio.sleep(20)
+    bot.delete_message(chat_id=chid, message_id=midd)
+
 
 def setup():
     update_queue = Queue()
@@ -90,8 +94,6 @@ def setup():
     dispatcher.add_handler(CallbackQueryHandler(movie_result))
     return dispatcher
 
-  
-   
 
 app = Flask(__name__)
 
